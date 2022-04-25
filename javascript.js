@@ -1,50 +1,32 @@
 const choiceArray = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
+let roundAmount = parseInt(prompt("Choose an odd number, 5 is default", 5));
 const computerSelection = computerPlay();
 
 // Random value (0-1) multiplied by length of array (3)
 function computerPlay() {
     let randomValue = Math.floor(Math.random() * choiceArray.length);
-    console.log(randomValue);
+    return randomValue;
 }
 
-// Single round is played, takes 2 parameters, returns outcome as a string
+// Round is played, score is incremented, winner of game is displayed
 function playRound(playerSelection, computerSelection) {
-    // playerSelection = playerSelection.toLowerCase();
-
-    if (playerSelection == "rock") {
-        if (computerSelection == "paper") {
-            return "You lose, paper beats rock.";
-            // Incriment comp
-        } else if ( computerSelection == "scissors") {
-            return "You win, rock beats scissors";
-            // incriment player
+    if ((playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "rock")) {
+            playerScore++;
+            console.log("You won the round!\nThe score is: " + playerScore + " - " + computerScore);
+            if (playerScore == roundAmount) {
+                console.log("You beat the computer!");
+            }
+        } else if (computerSelection == playerSelection) {
+            console.log("Oh no, looks like a tie!\n" + playerScore + " - " + computerScore);
         } else {
-            return "Tie";
+            computerScore++;
+            console.log("The computer won the round!\nThe score is: " + playerScore + " - " + computerScore);
+            if (computerSelection == roundAmount) {
+                console.log("The computer bested you.");
+            }
         }
-    } else if (playerSelection == "paper") {
-        if (computerSelection == "scissors") {
-            return "You lose, scissors beats paper.";
-        } else if (computerSelection == "rock") {
-            return "You win, paper beats rock";
-        } else {
-            return "Tie";
-        }
-    } else if (playerSelection == "scissors") {
-        if (computerSelection == "rock") {
-            return "You lose, rock beats scissors";
-        } else if (computerSelection == "paper") {
-            return "You win, scissors beats paper";
-        } else {
-            return "Tie";
-        }
-    }
 }
-
-// 
-function game() {
-    // playRound till computer/player score = 5
-}
-
-// 5 rounds
