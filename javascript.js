@@ -1,11 +1,12 @@
 const selectionButtons = document.querySelectorAll("[data-selection]")
+const computerScoreSpan = document.querySelector("[data-computer-score]")
+const yourScoreSpan = document.querySelector("[data-player-score]")
 const options = ["rock", "paper", "scissors"]
 
 function computerPlay() {
     const randomPick = options[Math.floor(Math.random() * options.length)]
     return randomPick
 }
-
 
 selectionButtons.forEach(selectionButton => {
     selectionButton.addEventListener("click", e => {
@@ -17,9 +18,9 @@ selectionButtons.forEach(selectionButton => {
 function makeSelection(selection) {
     const computerSelection = computerPlay()
 
+    playRound(selection, computerSelection)
     console.log("You: " + selection)
     console.log("Comp: " + computerSelection)
-    playRound(selection, computerSelection)
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -33,3 +34,7 @@ function playRound(playerSelection, computerSelection) {
             console.log("You lost!")
         }
 }
+
+// Remove console logging, replace with appending to document?
+// Append document with winner for round: span incremented +1?
+// Append score each round: data-player-score & data-computer-score
