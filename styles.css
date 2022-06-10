@@ -1,34 +1,34 @@
 body {
-    background-color: rgb(99, 99, 104)
+  background-color: rgb(99, 99, 104);
 }
 
 .results {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    align-items: center;
-    margin: 2rem 0;
-    font-size: 24px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 24px;
 }
 
 .result-score {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .selections {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .selection {
-    cursor: pointer;
-    font-size: 2rem;
-    background: rgb(128, 128, 131);
-    border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  background: rgb(128, 128, 131);
+  border: none;
 }
 
 .selection:hover {
-    background: rgb(147, 148, 150);
+  background: rgb(147, 148, 150);
 }
