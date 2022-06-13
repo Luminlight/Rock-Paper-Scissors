@@ -1,34 +1,45 @@
 body {
-  background-color: rgb(99, 99, 104);
+  background-color: rgba(99, 99, 104, 0.795);
 }
 
-.results {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
+.scores {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
-  font-size: 24px;
-}
-
-.result-score {
-  font-size: 2rem;
+  justify-content: center;
+  margin: 0 10rem;
 }
 
 .selections {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 .selection {
+  background-color: rgb(114, 114, 156);
   cursor: pointer;
-  font-size: 2rem;
-  background: rgb(128, 128, 131);
+  font-size: 1.6rem;
+  text-decoration: none;
   border: none;
 }
 
 .selection:hover {
-  background: rgb(147, 148, 150);
+  background-color: rgb(102, 102, 163);
+}
+
+.replay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.replay > button {
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: none;
 }

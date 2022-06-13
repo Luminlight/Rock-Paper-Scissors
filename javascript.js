@@ -3,6 +3,7 @@ const computerScoreSpan = document.querySelector("[data-computer-score]");
 const yourScoreSpan = document.querySelector("[data-player-score]");
 const roundResult = document.querySelector("[data-round-result]");
 const gameWinner = document.querySelector("[data-game-winner]");
+const replayButton = document.querySelector("[data-replay");
 const options = ["rock", "paper", "scissors"];
 
 function computerPlay() {
@@ -10,11 +11,29 @@ function computerPlay() {
   return randomPick;
 }
 
+// buttons
 selectionButtons.forEach((selectionButton) => {
   selectionButton.addEventListener("click", (e) => {
     const selectionName = selectionButton.dataset.selection;
     makeSelection(selectionName);
   });
+});
+
+function disableButtons() {
+  selectionButtons.forEach((e) => {
+    e.disabled = true;
+  });
+}
+
+replayButton.addEventListener("click", () => {
+  selectionButtons.forEach((e) => {
+    e.disabled = false;
+  });
+
+  yourScoreSpan.innerHTML = "0";
+  computerScoreSpan.innerHTML = "0";
+  roundResult.innerHTML = "";
+  gameWinner.innerHTML = "";
 });
 
 function makeSelection(selection) {
@@ -41,21 +60,18 @@ function playRound(playerSelection, computerSelection) {
 
 function incrementScore(scoreSpan) {
   scoreSpan.innerHTML = parseInt(scoreSpan.innerHTML) + 1;
+
+  appendGameWin();
 }
 
 function appendGameWin() {
-  if (yourScoreSpan === "5" || computerScoreSpan === "5") {
-    gameWinner.innerHTML = "Done";
+  if (yourScoreSpan.innerHTML === "5") {
+    gameWinner.innerHTML = "You won!";
+    disableButtons();
+  }
+
+  if (computerScoreSpan.innerHTML === "5") {
+    gameWinner.innerHTML = "The computer won!";
+    disableButtons();
   }
 }
-
-function resetGame() {
-  yourScoreSpan.innerHTML = "0";
-  computerScoreSpan.innerHTML = "0";
-  roundResult.innerHTML = "0";
-  gameWinner.innerHTML = "0";
-}
-
-// Stop incrementing after player or computer score = 5: How?
-// Display game winner: How to set winner in 1 line `${scoreSpan} wins`? (this doesn't work)
-// Reset game after button click? Find elegant solution to restarting the game/values
